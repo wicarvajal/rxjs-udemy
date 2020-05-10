@@ -16,6 +16,7 @@ const clickBtn$ = fromEvent(button, 'click').pipe(
 );
 
 counter$.pipe(
+  // cuando el obs del argumento emite un valor, se completa el obs
   takeUntil(clickBtn$)
 ).subscribe({
   next: val => console.log(val),

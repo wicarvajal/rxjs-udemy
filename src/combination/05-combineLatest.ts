@@ -26,6 +26,10 @@ const getInputStream = (elem: HTMLElement) => {
 }
 
 combineLatest(
+  // combina el último valor emitido de los obs internos en un solo osb
+  // emite valor solo si los dos obs emitieron valor
+  // si termina un obs, el otro sigue emitiendo el valor,
+  // combinado con el ultimo emitido por el otro obs
   getInputStream(input1),
   getInputStream(input2)
 ).subscribe(console.log);

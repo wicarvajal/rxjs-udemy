@@ -1,6 +1,6 @@
 import { ajax } from 'rxjs/ajax';
-import { switchMap, map, pluck, concatMap, first, tap } from 'rxjs/operators';
-import { zip, of, from } from 'rxjs';
+import { switchMap, map } from 'rxjs/operators';
+import { zip, of } from 'rxjs';
 
 /**
  * Ejercicio: 
@@ -39,24 +39,27 @@ import { zip, of, from } from 'rxjs';
 */
 
 
-(() => {
+(() =>{
 
-  // No tocar ========================================================
-  const SW_API = 'https://swapi.dev/api';
-  const getRequest = (url: string) => ajax.getJSON<any>(url);
-  // ==================================================================
+    // No tocar ========================================================
+    const SW_API = 'https://swapi.dev/api';                     
+    const getRequest = ( url: string ) => ajax.getJSON<any>(url);
+    // ==================================================================
 
-  // Realizar el llamado al URL para obtener a Luke Skywalker
-  getRequest(`${SW_API}/people/1/`).pipe(
-    // Realizar los operadores respectivos aquí
-    concatMap(res => zip(of(res), getRequest(res.films[0]))),
-    map(([character, film]) => ({character, film}))
-  
+    // Realizar el llamado al URL para obtener a Luke Skywalker
+    getRequest(`Aquí va un URL`).pipe(
+        // Realizar los operadores respectivos aquí
+        
+
+
+        
+
     // NO TOCAR el subscribe ni modificarlo ==
-  ).subscribe(console.log)
-  // ==
-  // =======================================
+    ).subscribe( console.log )           // ==
+    // =======================================
+
+
 
 })();
 
-
+		
