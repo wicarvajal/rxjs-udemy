@@ -32,9 +32,10 @@ const submit$ = fromEvent<Event>(form, 'submit').pipe(
     email: ev.target[0].value,
     password: ev.target[1].value
   })),
-  // mergeMap(loginHttpReq)
-  concatMap(loginHttpReq)
-  // exhaustMap(loginHttpReq)
+  // mergeMap(loginHttpReq) // Ejecuta todas las peticiones
+  switchMap(loginHttpReq) // Cancela las anteriores no completadas
+  // concatMap(loginHttpReq) // Ejecuta todas las peticiones en secuencia
+  // exhaustMap(loginHttpReq) // Ejecuta primera peticion e ignora el resto hasta que se complete
 )
 
 submit$.subscribe(console.log);
